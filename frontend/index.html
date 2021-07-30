@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Users names</h1>
+    <ul class="names"></ul>
+
+    <script>
+      const ulElement = document.querySelector('.names');
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('http://localhost:5000')
+          .then((response) => response.json())
+          .then((data) => {
+            for (item of data) {
+              ulElement.innerHTML += `<li>${item}</li>`;
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
